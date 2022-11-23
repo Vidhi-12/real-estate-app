@@ -1,0 +1,84 @@
+.login{
+    margin: auto auto;
+    margin-top: 70px;
+    height: 473px;
+    width: 464px;
+    background-color:#FFFFFF;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    flex-direction: column;
+    border-radius: 10px;
+}
+ .extra-info {
+     text-align: center;
+ }
+ .error{
+    color: red;
+    font-size: small;
+    font-weight: bold;
+ }
+ #link{
+    margin-top: 20px;
+    text-decoration: none;
+ }
+#logo-signup{
+    margin-top: 0px;
+    width: 100px;
+        height: 100px;
+        border-radius: 58%;
+}
+#logo{
+    width: 100px;
+    height: 100px;
+    border-radius: 58%;
+}
+.login-items{
+    margin-top: 30px;
+    height: 35px;
+    background-color: #FFFFFF;
+    width: 385px;
+    border-radius: 5px;
+}
+#signup{
+
+    text-decoration: none;
+    font-weight: bold;
+}
+#signin,#signup-btn{
+    background-color:#4C57B6;
+    width: 395px;
+    color: white;
+}
+#credential-signin{
+    /* margin-top:0; */
+    color: #000000;
+    font-size: small;
+}
+.extra-info,#extra-login{
+    margin-top: 30px;
+    color: #352D66;
+    font-size: 20px;
+}
+#signinlinktag{
+    text-decoration: none;
+}
+.signup-items{
+    margin-top: 25px;
+        height: 30px;
+        background-color: #FFFFFF;
+        width: 385px;
+        border-radius: 5px;
+}
+#signup-btn{
+    width: 390px;
+}
+@media screen and (max-width: 360px) {
+    .login {
+        width: 300px;
+    }
+   .extra-info{
+    margin: auto auto;
+   }
+}
