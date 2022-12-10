@@ -10,12 +10,12 @@ const { hashValidator } = require("../Bcrypt/Hashing");
 
 authRoutes.post("/signup", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const existingUser = await User.findOne({ email: req.body.email });
     if (!existingUser) {
       const value = await User.find().sort({ _id: -1 }).limit(1);
       const userid = parseInt(value[0].userid.split("D")[1]) + 1;
-      console.log(value[0].userid.split("D")[1]);
+      // console.log(value[0].userid.split("D")[1]);
       const hashPassword = await hashGenerate(req.body.password);
       const user = new User({
         username: req.body.username,
@@ -45,7 +45,7 @@ authRoutes.get("/", (req, res) => {
 
 authRoutes.post("/login", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     // console.log(req.body);
     const existingUser = await User.findOne({ email: req.body.email });
     if (!existingUser) {
@@ -58,7 +58,7 @@ authRoutes.post("/login", async (req, res) => {
       if (!checkUser) {
         res.status(400).json("Password is Invalid");
       } else {
-        console.log("Login successfull");
+        // console.log("Login successfull");
         // res.status(200).json("Login successfully");
         const token = tokenGenerator(existingUser.email);
         // res.cookie("jwt", token)
@@ -81,7 +81,7 @@ authRoutes.post("/login", async (req, res) => {
 
 authRoutes.get("/logout", async (req, res) => {
   res.clearCookie("jwt");
-  console.log("Logout successfully");
+  // console.log("Logout successfully");
   res.redirect("/");
 });
 
