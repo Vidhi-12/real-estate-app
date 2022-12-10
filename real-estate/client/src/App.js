@@ -9,7 +9,7 @@ import PropertyListingPage from './components/PropertyListingPage';
 // import PropertyDetail from './components/AddNewProperty/PropertyDetails';
 // import GeneralInfo from './components/AddNewProperty/GeneralInfo';
 // import LocationInfo from './components/AddNewProperty/LocationInfo';
-import Form from './components/addNewProperty/Form';
+import Form from './components/Form';
 
 
 function App() {

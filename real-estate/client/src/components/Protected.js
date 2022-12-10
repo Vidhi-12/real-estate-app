@@ -5,6 +5,7 @@ const Protected = ({ children }) => {
   if (token === null) {
     token = "";
   }
+  // console.log(token);
   return <>{token.length ? children : <Navigate to="/" />}</>;
 };
 export default Protected;

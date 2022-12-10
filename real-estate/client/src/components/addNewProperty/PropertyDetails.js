@@ -57,7 +57,7 @@ const submitFormData = (e) => {
                 type="text" 
                 name="area" 
                 placeholder='Example:10000'
-                value={values.area || ""} 
+                value={values.length * values.breadth || values.area || ""} 
                 onChange={handleFormData("area")}
             />
         </div>
@@ -68,7 +68,7 @@ const submitFormData = (e) => {
                 name="areaunit" 
                 placeholder='Example:10000'
                 value={values.length * values.breadth || values.area || ""} 
-                onChange={handleFormData("area")}
+                onChange={handleFormData("t_area")}
             />
         </div>
         <div className='formInput'>

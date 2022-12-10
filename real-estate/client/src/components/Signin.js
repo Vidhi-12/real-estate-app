@@ -32,9 +32,14 @@ function Signin() {
         email: userid,
         password: password,
       })
-      .then((res) => navigate("/propertyListingPage"))
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userid", res.data.details.userid);
+        localStorage.setItem("name", res.data.details.email);
+        navigate("/propertyListingPage");
+      })
       .catch((err) => alert("Enter valid crendentials"));
-    console.log(details);
+    // console.log(details);
     // PropertyListingPage();
   }
 

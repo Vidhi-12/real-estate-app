@@ -21,7 +21,9 @@ const submitFormData = async(e) => {
           'Content-Type': 'application/json'
       },
       body : JSON.stringify({
-        values
+        property: values.property,
+        area: values.area,
+        mobile: values.mobile
       })
   }).then(navigate("/propertyListingPage"))
 

@@ -44,6 +44,8 @@ function Form() {
   }));
   }
 
+  // console.log(formData);
+
   switch (step) {
        case 1:
       return (
