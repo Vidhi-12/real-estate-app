@@ -5,10 +5,10 @@ dotenv.config();
 const mongoose = require("mongoose");
 
 const uri = process.env.MONGODB_URI;
-
+const local_URI = process.env.DB_URL;
 // DB connection
 mongoose
-  .connect(process.env.DB_URL || uri, {
+  .connect( uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

@@ -1,4 +1,5 @@
 // import all the necessary packages
+const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -10,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const propertyListRoutes = require("./routes/property");
 const addPropertyRoutes = require("./routes/addProperty");
 
-const fileUpload = require("express-fileupload");
+// const fileUpload = require("express-fileupload");
 
 // we are using port 8000
 const port = process.env.PORT || 8000;
@@ -28,9 +29,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // use fileupload
-app.use(fileUpload({
-  useTempFiles:true
-}))
+// app.use(fileUpload({
+//   useTempFiles:true
+// }))
 
 app.use("/api/users", authRoutes);
 app.use("/api/users", addPropertyRoutes);

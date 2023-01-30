@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
  const Schema = mongoose.Schema;
 
  const addPropertySchema = new Schema({
-    ppdId: String, 
-    image: String,
+    ppdId: {type: String, unique: true}, 
+    property_image: {
+      url:String,
+      filename:String
+   },
     property: [String], 
     contact: String,
     area: Number, 
