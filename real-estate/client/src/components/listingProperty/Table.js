@@ -84,6 +84,7 @@ export default function Table(
               }
           })
           .then((result) => result.json())
+          .then((res) => getAllListedPropeties())
         //   result = await result.json();
 
         //   window.location.reload(false);
