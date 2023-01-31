@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import '../RealEstate.css'
-import {Link} from "react-router-dom";
-import CommonPage from '../CommonPage';
-import PropertyNav from './PropertyNav';
+import '../RealEstate.css';
 
 export default function GeneralInfo({ nextStep, handleFormData, prevStep, values }) {
-
 
 const submitFormData = (e) => {
     e.preventDefault();
@@ -19,8 +15,12 @@ const submitFormData = (e) => {
         <section className='formSection'>
         <div className='formInput'>
             <label>Owner</label>
-            <select name='owner'>
+            <select name='owner'
+            value={values.owner}
+            onChange={handleFormData("owner")}>
                 <option value="#">Owner</option>
+                <option value="Self">Self</option>
+                <option value="Other">Other</option>
             </select>
         </div>
         <div className='formInput'>
@@ -35,34 +35,65 @@ const submitFormData = (e) => {
         </div>
         <div className='formInput'>
             <label>Posted By</label>
-            <select name='postedBy'>
+            <select name='postedBy'
+            value={values.postedBy}
+            onChange={handleFormData("postedBy")}>
                 <option value="#">Posted By</option>
+                <option value="Self">Self</option>
+                <option value="Relatives">Relatives</option>
+                <option value="Other">Other</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Sale Type</label>
-            <select name='sale'>
-                <option value="#">Please Select</option>
+            <select name='sale'
+            value={values.sale}
+            onChange={handleFormData("sale")}>
+                <option value="#">Select Sale Type</option>
+                <option value="Sale by negotiation">Sale by negotiation</option>
+                <option value="Buyer Enquiry Over">Buyer Enquiry Over</option>
+                <option value="Auctions">Auctions</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Featured Package</label>
-            <select name='featuredPackage'>
-                <option value="#">Please Select</option>
+            <select name='featuredPackage'
+            value={values.featuredPackage}
+            onChange={handleFormData("featuredPackage")}>
+                <option value="#">Select Featured Package</option>
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="Gold">Gold</option>
             </select>
         </div>
         <div className='formInput'>
             <label>PPD Package</label>
-            <select name='ppdPackage'>
-                <option value="#">Please Select</option>
+            <select name='ppdPackage'
+            value={values.ppdPackage}
+            onChange={handleFormData("ppdPackage")}>
+                <option value="#">Select PPD Package</option>
+                <option value="Basic">Basic</option>
+                <option value="Premium">Premium</option>
+                <option value="Gold">Gold</option>
         </select>
         </div>
-        <div className='formInput'>
-            <span className='eclipseCamera'>
+        <div className='formInput' id='img-div'>
+        <input 
+                type="file" 
+                name="file-name"
+                className="file-type"
+                onChange={handleFormData(
+                     "imageFileName"
+                )}
+            />
+            <div className='eclipseCamera'>
                 {/* <img src={require("/images/eclipse.png")} alt="select folder"/> */}
+                
                 <img src='/images/camera.png' alt='camera' className='camera'/>
-            </span>
-            <span className='cameraText'>Add Photo</span>
+               
+                </div>
+                
+            <div className='cameraText'>{values.imgName}</div>
         </div>
         <br/>
 

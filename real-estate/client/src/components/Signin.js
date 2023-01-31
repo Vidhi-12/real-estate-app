@@ -4,6 +4,7 @@ import React, {useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import CONST from './utils/CONST';
 
 function Signin() {
   const [details, setDetails] = useState({
@@ -26,9 +27,9 @@ function Signin() {
   //       email, password
   //     })
   // }).then(navigate("/propertyListingPage"));
-
+// console.log(CONST.API_BASE_PATH);
     axios
-      .post("http://localhost:8000/api/users/login", {
+      .post(`${CONST.API_BASE_PATH}/api/users/login`, {
         email: userid,
         password: password,
       })

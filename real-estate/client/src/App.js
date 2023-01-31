@@ -20,6 +20,11 @@ function App() {
       
       <Route path='/' element={<Signin/>}/>
       <Route path='/signup' element={<Signup/>}/>
+      {/* <Route path='/propertyListingPage/page/:pageNumber' element={
+         <Protected>
+          <PropertyListingPage/>
+         </Protected>
+      }/> */}
       <Route path='/propertyListingPage' element={
          <Protected>
           <PropertyListingPage/>
@@ -37,25 +42,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <Routes>
-        <Route path="/" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/property"
-          element={
-            <Protected>
-              <PropertyListingPage />
-            </Protected>
-          }
-        />
-        <Route
-          path="/property"
-          element={
-            <Protected>
-              <PropertyListingPage />
-            </Protected>
-          }
-        />
-      </Routes> */}

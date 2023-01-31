@@ -1,32 +1,52 @@
 import React, { useState } from 'react';
 import '../RealEstate.css'
-import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import CommonPage from '../CommonPage';
-import PropertyNav from './PropertyNav';
+import CONST from '../utils/CONST';
+import axios from 'axios';
 
-export default function LocationInfo({ nextStep, handleFormData, prevStep, values }) {
+export default function LocationInfo({ nextStep, handleFormData, prevStep, values, setValues }) {
 
 const navigate = useNavigate();
 const submitFormData = async(e) => {
     e.preventDefault();
+    // console.log(values);
 
-    await fetch("http://localhost:8000/api/users/property",{
-      method : 'POST',
-      headers : {
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:3000',
-          "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
-          'Access-Control-Allow-Credentials': 'true',
-          'Content-Type': 'application/json'
-      },
-      body : JSON.stringify({
-        property: values.property,
-        area: values.area,
-        mobile: values.mobile
+    const formData = new FormData()
+    for (let key in values) {
+        formData.append(key, values[key])
+    }
+    // console.log(formData);
+    axios
+    //   .post("http://localhost:8000/api/users/property", formData, {
+      .post(`${CONST.API_BASE_PATH}/api/users/property`, formData, {
+                // property: values.property,
+                // area: values.area,
+                // mobile: values.mobile,
+                // property_image: values.property_image,
+                // imgName: values.imgName
+                // data: formData
       })
-  }).then(navigate("/propertyListingPage"))
-
+      .then((data) => (data))
+      .then((res) => navigate("/propertyListingPage"))
+    //   .catch((err) => alert("Email already exist"));
+//     await fetch(`${CONST.API_BASE_PATH}/api/users/property`,{
+//       method : 'POST',
+//       headers : {
+//         //   'Accept': 'application/json',
+//         //   'Access-Control-Allow-Origin': 'http://localhost:3000',
+//           "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
+//           'Access-Control-Allow-Credentials': 'true'
+//       },
+//     //   body : JSON.stringify(values)
+//       body : JSON.stringify({
+//         property: values.property,
+//         area: values.area,
+//         mobile: values.mobile,
+//         image: values.image,
+//         imgName: values.imgName
+//       })
+//   }).then(navigate("/propertyListingPage"))
+  
         nextStep();
   };
 
@@ -41,27 +61,40 @@ const submitFormData = async(e) => {
                 type="text" 
                 name="email" 
                 placeholder='Email'
-                // value={inputs.email || ""} 
-                // onChange={handleChange}
+                value={values.email || ""} 
+                onChange={handleFormData("email")}
             />
         </div>
         <div className='formInput'>
-            <label>City</label>
-            <select name='city'>
-                <option>Select City</option>
+            <label>State</label>
+            <select name='state'
+            value={values.state}
+            onChange={handleFormData("state")}>
+                <option>Select State</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Karnataka">Karnataka</option>
             </select>
         </div>
         <div className='formInput'>
-            <label>Area</label>
-            <select name='area'>
-                <option value="#">Select Area</option>
+            <label>Country</label>
+            <select name='country'
+            value={values.country}
+            onChange={handleFormData("country")}>
+                <option value="#">Select Country</option>
+                <option value="India">India</option>
             </select>
         </div>
         
         <div className='formInput'>
             <label>Pincode</label>
-            <select name='pincode'>
+            <select name='pincode'
+            value={values.pincode}
+            onChange={handleFormData("pincode")}>
                 <option value="#">Select Pincode</option>
+                <option value="110010">110010</option>
+                <option value="110098">110098</option>
+                <option value="110066">110066</option>
             </select>
         </div>
         <div className='formInput'>
@@ -70,8 +103,8 @@ const submitFormData = async(e) => {
                 type="text" 
                 name="address" 
                 placeholder='Address'
-                // value={inputs.address || ""} 
-                // onChange={handleChange}
+                value={values.address || ""} 
+                onChange={handleFormData("address")}
             />
         </div>
         <div className='formInput'>
@@ -80,8 +113,8 @@ const submitFormData = async(e) => {
                 type="text" 
                 name="landmark" 
                 placeholder='Landmark'
-                // value={inputs.landmark || ""} 
-                // onChange={handleChange}
+                value={values.landmark || ""} 
+                onChange={handleFormData("landmark")}
             />
         </div>
         <div className='formInput'>
@@ -90,8 +123,8 @@ const submitFormData = async(e) => {
             type="text" 
             name="latitude" 
             placeholder='Latitude'
-            // value={inputs.latitude || ""} 
-            // onChange={handleChange}
+            value={values.latitude || ""} 
+            onChange={handleFormData("latitude")}
             />
         </div>
         <div className='formInput'>
@@ -100,8 +133,8 @@ const submitFormData = async(e) => {
                 type="text" 
                 name="longitude" 
                 placeholder='Longitude'
-                // value={inputs.longitude || ""} 
-                // onChange={handleChange}
+                value={values.longitude || ""} 
+                onChange={handleFormData("longitude")}
             />
         </div>
 

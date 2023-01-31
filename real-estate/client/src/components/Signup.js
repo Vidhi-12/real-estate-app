@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import CONST from './utils/CONST';
 
 function Signup() {
   const {
@@ -44,7 +44,9 @@ function Signup() {
   // .then(()=>console.log(sigupDetails.password))
 
     axios
-      .post("http://localhost:8000/api/users/signup", {
+      // .post("http://localhost:8000/api/users/signup", {
+      .post(`${CONST.API_BASE_PATH}/api/users/signup`, {
+
         email: email,
         password: password,
       })

@@ -14,11 +14,12 @@ function Form() {
   const [step, setstep] = useState(1);
 
   const [formData, setFormData] = useState({
-    "property" : "",
-    "length" : "",
-    "breadth" : "",
-    "area" : "",
-    "mobile" : ""
+    property : "",
+    area : "",
+    mobile : "",
+    property_image : "",
+    imgName : "",
+    property_description : ""
   })
 
   const nextStep = () => {
@@ -36,15 +37,26 @@ function Form() {
 
   const handleInputData = input => e => {
     
-    const {value } = e.target;
-
+    const {value, name } = e.target;
+  //   (e) => setData(data => ({
+  //     ...data, postImage: e.target.files[0], imgName: e.target.files[0].name
+  // }))
+  //   image: e.target.files[0], imgName: e.target.files[0].name
+  // console.log(input);
+  if(name === "file-name"){
+    setFormData(prevState => ({
+      ...prevState,
+      property_image: e.target.files[0], imgName: e.target.files[0].name
+  }));
+  }else{
     setFormData(prevState => ({
       ...prevState,
       [input]: value
   }));
   }
+  }
 
-  // console.log(formData);
+  // console.log(formData)
 
   switch (step) {
        case 1:
@@ -93,7 +105,7 @@ function Form() {
           <PropertyNav step={step} navStep={navStep}/>
             <div className="form-elements">
               
-                    <LocationInfo nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} />
+                    <LocationInfo nextStep={nextStep} prevStep={prevStep} handleFormData={handleInputData} values={formData} setValues={setFormData}/>
                   
             </div>
             </CommonPage>

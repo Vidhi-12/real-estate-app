@@ -6,6 +6,7 @@ import { useNavigate,useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState,useEffect } from 'react';
 import Logout from './Logout';
+import CONST from './utils/CONST';
 
 function CommonPage({children}) {
 
@@ -20,7 +21,7 @@ function CommonPage({children}) {
 
     const handleLogout = () => {
         axios
-      .get("http://localhost:8000/api/users/logout")
+      .get(`${CONST.API_BASE_PATH}/api/users/logout`)
       .then((res) => {
         console.log(localStorage.getItem("token"));
         localStorage.clear();
@@ -110,7 +111,9 @@ function CommonPage({children}) {
                                 setShowPages(!showpages);
                             }}
                         />
-                        {showpages ? <Logout /> : null}
+                        {showpages ? 
+                        <Logout /> 
+                        : null}
                     </div>
 
                     {/* <div className='header-id'>USER ID :</div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../RealEstate.css';
-// import {NavLink} from 'react-router-dom';
 import {
 Nav,
 NavLink,
@@ -13,7 +12,7 @@ export default function PropertyNav({step, navStep}) {
 
 	const changeStep = (event) => {
 		const stepNav = event.currentTarget.id;
-		console.log(stepNav);
+		// console.log(stepNav);
 		if(stepNav === "basic_info"){
 			navStep(1);
 		}

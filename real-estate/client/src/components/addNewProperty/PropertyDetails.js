@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import '../RealEstate.css';
-import {Link} from "react-router-dom";
-import CommonPage from '../CommonPage';
-import PropertyNav from './PropertyNav';
 
 export default function PropertyDetail({ nextStep, handleFormData, prevStep, values }) {
 //   const [inputs, setInputs] = useState({});
@@ -57,7 +54,7 @@ const submitFormData = (e) => {
                 type="text" 
                 name="area" 
                 placeholder='Example:10000'
-                value={values.length * values.breadth || values.area || ""} 
+                value={values.area || ""} 
                 onChange={handleFormData("area")}
             />
         </div>
@@ -73,44 +70,79 @@ const submitFormData = (e) => {
         </div>
         <div className='formInput'>
             <label>No of BHK</label>
-            <select name='bhk'>
+            <select name='bhk'
+            value={values.bhk}
+            onChange={handleFormData("bhk")}>
                 <option value="#">Select No of BHK</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="Not Applicable">Not Applicable</option>
             </select>
         </div>
         <div className='formInput'>
             <label>No of Floor</label>
-            <select name='floor'>
+            <select name='floor'
+            value={values.floor}
+            onChange={handleFormData("floor")}>
                 <option value="#">Select No of Floor</option>
+                <option value="Below 3">Below 3</option>
+                <option value="Between 3-8">Between 3-8</option>
+                <option value="Above 8">Above 8</option>
+                <option value="Not Applicable">Not Applicable</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Attached</label>
-            <select name='attached'>
+            <select name='attached'
+            value={values.attached}
+            onChange={handleFormData("attached")}>
                 <option value="#">Select Attached</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Western Toilet</label>
-            <select name='westernToilet'>
+            <select name='westernToilet'
+            value={values.western_toilet}
+            onChange={handleFormData("western_toilet")}>
                 <option value="#">Select Western Toilet</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
         </select>
         </div>
         <div className='formInput'>
             <label>Furnished</label>
-            <select name='furnished'>
+            <select name='furnished'
+            value={values.furnished}
+            onChange={handleFormData("furnished")}>
                 <option value="#">Select Furnished</option>
+                <option value="Semi-furnished">Semi-furnished</option>
+                <option value="Furnished">Furnished</option>
+                <option value="Fully-furnished">Fully-furnished</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Car Parking</label>
-            <select name='carParking'>
+            <select name='carParking'
+            value={values.car_parking}
+            onChange={handleFormData("car_parking")}>
                 <option value="#">Select Car Parking</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
         </div>
         <div className='formInput'>
             <label>Lift</label>
-            <select name='lift'>
+            <select name='lift'
+            value={values.lift}
+            onChange={handleFormData("lift")}>
                 <option value="#">Select Lift</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
         </div>
         <div className='formInput'>
@@ -119,14 +151,20 @@ const submitFormData = (e) => {
                 type="text" 
                 name="electricity" 
                 placeholder='Example:3 phase'
-                // value={inputs.electricity || ""} 
-                // onChange={handleChange}
+                value={values.electricity}
+                onChange={handleFormData("electricity")}
             />
         </div>
         <div className='formInput'>
             <label>Facing</label>
-            <select name='facing'>
+            <select name='facing'
+            value={values.facing}
+            onChange={handleFormData("facing")}>
                 <option value="#">Select Facing</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+                <option value="North">North</option>
+                <option value="South">South</option>
             </select>
         </div>
         <br/>
