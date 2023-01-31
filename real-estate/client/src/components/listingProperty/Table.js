@@ -47,7 +47,7 @@ export default function Table(
             status: "Sold",
             daysLeft: data.daysLeft
           };
-      console.log(soldProperty);
+    //   console.log(soldProperty);
         //   setUpdateStatus(soldProperty);
         //   console.log(updateStatus);
     //   console.log(isDisabled);
@@ -82,10 +82,11 @@ export default function Table(
               headers: {
                   'Content-Type': "application/json"
               }
-          });
-          result = await result.json();
+          })
+          .then((result) => result.json())
+        //   result = await result.json();
 
-          window.location.reload(false);
+        //   window.location.reload(false);
           };
 
         //   const handleEditFormSubmit = async(e) => {
