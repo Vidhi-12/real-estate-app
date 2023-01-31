@@ -14,12 +14,23 @@ authRoutes.post("/signup", async (req, res) => {
     const existingUser = await User.findOne({ email: req.body.email });
     if (!existingUser) {
       const value = await User.find().sort({ _id: -1 }).limit(1);
-      const userid = parseInt(value[0].userid.split("D")[1]) + 1;
+      // const userid = parseInt(value[0].userid.split("D")[1]) + 1;
+
+      let userid;
+        if(!value.length){
+          userid = "USID1";
+        }
+        else{
+            const user_id_increament = parseInt(value[0].userid.slice(4)) + 1;
+            userid = "USID" + user_id_increament;
+        }
+        // console.log(userid);
       // console.log(value[0].userid.split("D")[1]);
       const hashPassword = await hashGenerate(req.body.password);
       const user = new User({
         username: req.body.username,
-        userid: "06PPD"+userid,
+        // userid: "06PPD"+userid,
+        userid: userid,
         email: req.body.email,
         password: hashPassword,
       });
@@ -41,7 +52,6 @@ authRoutes.get("/", (req, res) => {
   res.send("Working");
 });
 
-// let userName = ""
 
 authRoutes.post("/login", async (req, res) => {
   try {

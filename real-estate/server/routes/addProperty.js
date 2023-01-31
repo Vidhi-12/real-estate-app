@@ -63,10 +63,11 @@ router.post("/property", upload.single("property_image"), async (req, res) => {
             ppd_id = "PPD" + ppd_id_increament;
         }
         
-        console.log(ppd_id);
+        // console.log(ppd_id);
         const views = parseInt(Math.random() * 30);
         const daysLeft = parseInt(Math.random() * 50);
-        console.log(req.file);
+        // console.log(req.file);
+        // console.log(req.body);
         // console.log(req.file.path  +" : " + req.file.filename);
 
         
@@ -88,12 +89,12 @@ router.post("/property", upload.single("property_image"), async (req, res) => {
        
         const add_property = await AddProperty.create({
             ppdId: ppd_id, 
-            property_image: { url: '',
-                filename: '' },
-            // image:'',
+            property_image: { url: req.file.path,
+                filename: req.file.filename },
             property: req.body.property, 
             contact: req.body.mobile,
             area: req.body.area, 
+            property_description: req.body.property_description,
             views: views,
             daysLeft: daysLeft
         });

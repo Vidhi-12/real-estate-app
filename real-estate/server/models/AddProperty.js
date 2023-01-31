@@ -13,6 +13,7 @@ const mongoose = require('mongoose');
     views: {type: Number},
     status: {type: String, default: "Unsold"},
     daysLeft: {type:Number},
+    property_description: String,
     user : {type : Schema.Types.ObjectId, ref: "User"}
  })
 

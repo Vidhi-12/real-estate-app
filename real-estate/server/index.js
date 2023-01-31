@@ -19,10 +19,10 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 app.use(cors())
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+// app.use(express.json());
+// app.use(express.urlencoded({extended:true}));
 
-app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.urlencoded({extended:true}));
 // middleware to convert our request data into JSON format
 app.use(bodyParser.json());
 
